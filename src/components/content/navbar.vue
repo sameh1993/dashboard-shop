@@ -2,10 +2,10 @@
   <div class="header-main">
     <div class="header-left">
       <div class="logo-name">
-        <a href="index.html">
+        <router-link to="/">
           <h1>Shoppy</h1>
           <!--<img id="logo" src="" alt="Logo"/>-->
-        </a>
+        </router-link>
       </div>
       <!--search-box-->
       <div class="search-box">
@@ -37,7 +37,9 @@
               </li>
               <li>
                 <a href="#">
-                  <div class="user_img"><img src="images/p4.png" alt="" /></div>
+                  <div class="user_img">
+                    <img src="@/assets/images/p4.png" alt="" />
+                  </div>
                   <div class="notification_desc">
                     <p>Lorem ipsum dolor</p>
                     <p><span>1 hour ago</span></p>
@@ -47,7 +49,9 @@
               </li>
               <li class="odd">
                 <a href="#">
-                  <div class="user_img"><img src="images/p2.png" alt="" /></div>
+                  <div class="user_img">
+                    <img src="@/assets/images/p2.png" alt="" />
+                  </div>
                   <div class="notification_desc">
                     <p>Lorem ipsum dolor</p>
                     <p><span>1 hour ago</span></p>
@@ -57,7 +61,9 @@
               </li>
               <li>
                 <a href="#">
-                  <div class="user_img"><img src="images/p3.png" alt="" /></div>
+                  <div class="user_img">
+                    <img src="@/assets/images/p3.png" alt="" />
+                  </div>
                   <div class="notification_desc">
                     <p>Lorem ipsum dolor</p>
                     <p><span>1 hour ago</span></p>
@@ -88,7 +94,9 @@
               </li>
               <li>
                 <a href="#">
-                  <div class="user_img"><img src="images/p5.png" alt="" /></div>
+                  <div class="user_img">
+                    <img src="@/assets/images/p5.png" alt="" />
+                  </div>
                   <div class="notification_desc">
                     <p>Lorem ipsum dolor</p>
                     <p><span>1 hour ago</span></p>
@@ -98,7 +106,9 @@
               </li>
               <li class="odd">
                 <a href="#">
-                  <div class="user_img"><img src="images/p6.png" alt="" /></div>
+                  <div class="user_img">
+                    <img src="@/assets/images/p6.png" alt="" />
+                  </div>
                   <div class="notification_desc">
                     <p>Lorem ipsum dolor</p>
                     <p><span>1 hour ago</span></p>
@@ -108,7 +118,9 @@
               </li>
               <li>
                 <a href="#">
-                  <div class="user_img"><img src="images/p7.png" alt="" /></div>
+                  <div class="user_img">
+                    <img src="@/assets/images/p7.png" alt="" />
+                  </div>
                   <div class="notification_desc">
                     <p>Lorem ipsum dolor</p>
                     <p><span>1 hour ago</span></p>
@@ -207,7 +219,7 @@
             >
               <div class="profile_img">
                 <span class="prfil-img"
-                  ><img src="images/p1.png" alt="" />
+                  ><img src="@/assets/images/p1.png" alt="" />
                 </span>
                 <div class="user-name">
                   <p>Malorum</p>
