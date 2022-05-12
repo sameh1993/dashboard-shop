@@ -1,5 +1,7 @@
 <script>
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   setup() {},
   mounted() {
     var radarChartData = {
@@ -25,7 +27,7 @@ export default {
       radarChartData
     );
   },
-};
+});
 </script>
 
 <template>

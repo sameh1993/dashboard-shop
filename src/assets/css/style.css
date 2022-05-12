@@ -163,8 +163,7 @@ ul {
   transition-delay: 300ms;
 }
 .sidebar-menu {
-  position: absolute;
-  float: left;
+position: absolute;
   width: 220px;
   top: 0px;
   left:0px;
@@ -172,6 +171,7 @@ ul {
   background-color:#202121;
   color: #aaabae;
   z-index: 999;
+  min-height: 630px;
 }
 #menu {
   list-style: none;
@@ -394,6 +394,15 @@ span.logo-clr{
 }
 
 @-moz-keyframes move {
+    0% {
+       background-position: 0 0;
+    }
+    100% {
+       background-position: 50px 50px;
+    }
+}
+
+@keyframes move {
     0% {
        background-position: 0 0;
     }
@@ -1572,6 +1581,7 @@ background-color:#000;
 .copyrights p {
     font-size: 1em;
     color: #000;
+    margin-bottom:2px;  
 }
 .copyrights p a{
     color: #000;

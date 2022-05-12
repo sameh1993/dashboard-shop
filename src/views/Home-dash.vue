@@ -1,11 +1,12 @@
 <script setup>
-import { onMounted } from "vue";
 import marketUpdates from "@/components/content/market-updates.vue";
-import TotalRevenue from "../components/content/total-revenue.vue";
-
-onMounted(() => {
-
-});
+import TotalRevenue from "@/components/content/total-revenue.vue";
+import recentFollowers from "@/components/content/recent-followers.vue";
+import navbarComp from "@/components/footer.vue";
+import GlocyChart from "@/components/content/glocy-chart.vue";
+import geoChart from "@/components/content/geo-chart.vue";
+import footerComp from "@/components/footer.vue";
+import totalSales from "@/components/content/total-sales.vue";
 </script>
 
 <template>
@@ -30,17 +31,7 @@ onMounted(() => {
     <div class="main-page-charts">
       <div class="main-page-chart-layer1 row">
         <div class="col-md-6 chart-layer1-left">
-          <div class="glocy-chart">
-            <div class="span-2c">
-              <h3 class="tlt">Sales Analytics</h3>
-              <canvas
-                id="bar"
-                height="300"
-                width="400"
-                style="width: 400px; height: 300px"
-              ></canvas>
-            </div>
-          </div>
+          <GlocyChart />
         </div>
         <div class="col-md-6 chart-layer1-right">
           <div class="user-marorm">
@@ -82,80 +73,7 @@ onMounted(() => {
     <!--main page chart layer2-->
     <div class="chart-layer-2 row">
       <div class="col-md-6 chart-layer2-right">
-        <div class="prograc-blocks">
-          <!--Progress bars-->
-          <div class="home-progres-main">
-            <h3>Total Sales</h3>
-          </div>
-          <div class="bar_group group_ident-1">
-            <p class="b_label">Rating</p>
-            <div
-              class="bar_group__bar thin"
-              label="Rating"
-              show_values="true"
-              tooltip="true"
-              value="343"
-              style="margin-bottom: 40px; width: 62.3636%"
-            >
-              <div class="b_tooltip">
-                <span>343</span>
-                <div class="b_tooltip--tri"></div>
-              </div>
-              <p class="bar_label_min">0</p>
-              <p class="bar_label_max">550</p>
-            </div>
-            <p class="b_label">Quality</p>
-            <div
-              class="bar_group__bar thin"
-              label="Quality"
-              show_values="true"
-              tooltip="true"
-              value="235"
-              style="margin-bottom: 40px; width: 42.7273%"
-            >
-              <div class="b_tooltip">
-                <span>235</span>
-                <div class="b_tooltip--tri"></div>
-              </div>
-              <p class="bar_label_min">0</p>
-              <p class="bar_label_max">550</p>
-            </div>
-            <p class="b_label">Amount</p>
-            <div
-              class="bar_group__bar thin"
-              label="Amount"
-              show_values="true"
-              tooltip="true"
-              value="550"
-              style="margin-bottom: 40px; width: 100%"
-            >
-              <div class="b_tooltip">
-                <span>550</span>
-                <div class="b_tooltip--tri"></div>
-              </div>
-              <p class="bar_label_min">0</p>
-              <p class="bar_label_max">550</p>
-            </div>
-            <p class="b_label">Farming</p>
-            <div
-              class="bar_group__bar thin"
-              label="Farming"
-              show_values="true"
-              tooltip="true"
-              value="456"
-              style="margin-bottom: 40px; width: 82.9091%"
-            >
-              <div class="b_tooltip">
-                <span>456</span>
-                <div class="b_tooltip--tri"></div>
-              </div>
-              <p class="bar_label_min">0</p>
-              <p class="bar_label_max">550</p>
-            </div>
-          </div>
-
-          <!--//Progress bars-->
-        </div>
+        <total-sales />
       </div>
       <div class="col-md-6 chart-layer2-left">
         <TotalRevenue />
@@ -257,4 +175,6 @@ onMounted(() => {
     <!--climate end here-->
   </div>
   <!--inner block end here-->
+  <footer-comp />
+  <!--COPY rights end here-->
 </template>

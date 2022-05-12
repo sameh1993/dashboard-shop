@@ -9,9 +9,11 @@
       </div>
       <!--search-box-->
       <div class="search-box">
-        <form>
+        <form class="form">
           <input type="text" placeholder="Search..." />
-          <input type="submit" value="" />
+          <button class="">
+            <i class="fa fa-search rounded-circle"></i>
+          </button>
         </form>
       </div>
       <!--//end-search-box-->
@@ -248,3 +250,5 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped></style>
