@@ -1,18 +1,19 @@
 import { defineStore } from 'pinia'
-import axios from "axios"
 
-export const useCounterStore = defineStore({
-  state: () => ({
-    isAuth: undefined,
-    isAdmin: undefined,
-  }),
+export const useCounterStore = defineStore('counter', {
+  state: () => {
+    return {
+      name: "counter",
+      active: true
+    }
+  },
   actions: {
-    login(userData) {
-      axios.get("").then(result => {
+    login() {
+      // axios.get("").then(result => {
 
-      }).catch(err => {
-        console.log(err)
-      })
+      // }).catch(err => {
+      //   console.log(err)
+      // })
     }
   }
 })

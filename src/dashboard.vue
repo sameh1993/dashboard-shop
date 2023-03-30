@@ -2,116 +2,29 @@
 import sidebar from "@/components/sidebar.vue";
 import bodyComp from "@/components/content/body.vue";
 import navbarComp from "@/components/content/navbar.vue";
-// import marketUpdates from "@/components/content/market-updates.vue";
-// import TotalRevenue from "../components/content/total-revenue.vue";
-// import recentFollowers from "@/components/content/recent-followers.vue";
-// import geoChart from "@/components/content/geo-chart.vue";
-// import footerComp from "@/components/footer.vue";
+import footerComp from "@/components/footer.vue";
 import $ from "jquery";
 import { onMounted } from "vue";
 
-onMounted(function () {
-  $(document).ready(function () {
-    var icons = new Skycons({ color: "#fff" }),
-      list = [
-        "clear-night",
-        "cloudy",
-        "partly-cloudy-night",
-        "cloudy",
-        "rain",
-        "sleet",
-        "snow",
-        "wind",
-        "fog",
-      ],
-      i;
-
-    for (i = list.length; i--; ) icons.set(list[i], list[i]);
-
-    icons.play();
-
-    var icons = new Skycons({ color: "#fff" }),
-      list = [
-        "clear-night",
-        "partly-cloudy-day",
-        "partly-cloudy-night",
-        "cloudy",
-        "rain",
-        "sleet",
-        "snow",
-        "wind",
-        "fog",
-      ],
-      i;
-
-    for (i = list.length; i--; ) icons.set(list[i], list[i]);
-
-    icons.play();
-
-    var navoffeset = $(".header-main").offset().top;
-    $(window).scroll(function () {
-      var scrollpos = $(window).scrollTop();
-      if (scrollpos >= navoffeset) {
-        $(".header-main").addClass("fixed");
-      } else {
-        $(".header-main").removeClass("fixed");
-      }
-    });
-
-    var icons = new Skycons({ color: "#fff" }),
-      list = [
-        "clear-night",
-        "clear-day",
-        "partly-cloudy-night",
-        "cloudy",
-        "rain",
-        "sleet",
-        "snow",
-        "wind",
-        "fog",
-      ],
-      i;
-
-    for (i = list.length; i--; ) icons.set(list[i], list[i]);
-
-    icons.play();
-
-    var barChartData = {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "jul"],
-      datasets: [
-        {
-          fillColor: "#FC8213",
-          data: [65, 59, 90, 81, 56, 55, 40],
-        },
-        {
-          fillColor: "#337AB7",
-          data: [28, 48, 40, 19, 96, 27, 100],
-        },
-      ],
-    };
-    new Chart(document.getElementById("bar").getContext("2d")).Bar(
-      barChartData
+onMounted(() => {
+  $(".sidebar-icon").click(function() {
+    $(".page-container").toggleClass(
+      "sidebar-collapsed slidebar-collapsed-back"
     );
+    $(".header-main").toggleClass("left");
   });
 
-  var toggle = true;
-
-  $(".sidebar-icon").click(function () {
-    if (toggle) {
-      $(".page-container")
-        .addClass("sidebar-collapsed")
-        .removeClass("sidebar-collapsed-back");
-      $("#menu span").css({ position: "absolute" });
-    } else {
-      $(".page-container")
-        .removeClass("sidebar-collapsed")
-        .addClass("sidebar-collapsed-back");
-      setTimeout(function () {
-        $("#menu span").css({ position: "relative" });
-      }, 400);
-    }
-    toggle = !toggle;
-  });
+  window.onresize = function() {
+    // const container = document.querySelectorAll(".page-container");
+    // if (window.innerWidth >= 922) {
+    //   container.classList.remove(
+    //     "sidebar-collapsed",
+    //     "slidebar-collapsed-back"
+    //   );
+    // } else {
+    //   container.classList.add("slidebar-collapsed-back", "sidebar-collapsed");
+    // }
+  };
 });
 </script>
 
@@ -123,7 +36,22 @@ onMounted(function () {
           <!-- script-for sticky-nav -->
           <navbar-comp />
           <!-- /script-for sticky-nav -->
-          <router-view />
+          <!-- <Transition name="fade">
+            
+            <router-view />
+          </Transition>-->
+          <div class>
+            <router-view v-slot="{ Component, route }">
+              <transition name="fade" mode="out-in">
+                <div :key="route.name">
+                  <component :is="Component"></component>
+                </div>
+              </transition>
+            </router-view>
+
+            <footerComp />
+          </div>
+
           <!-- start footer -->
         </div>
       </div>
@@ -133,3 +61,73 @@ onMounted(function () {
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+@import "@/main.scss";
+
+.style {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.root {
+  min-height: 100vh;
+}
+
+.page-container {
+  min-width: unset;
+  overflow: hidden;
+  min-height: 100vh;
+
+  .header-main {
+    left: auto;
+    @include media-breakpoint-up(md) {
+      width: 86%;
+    }
+  }
+
+  .left-content {
+    padding-top: 20px;
+    height: 100%;
+    width: 85.9%;
+    @include media-breakpoint-up(md) {
+      width: 85.6%;
+    }
+
+    @include media-breakpoint-only(sm) {
+      width: 91.9%;
+    }
+
+    .fixed {
+      @include media-breakpoint-down(sm) {
+        width: 91%;
+      }
+      @include media-breakpoint-down(xs) {
+        width: 85%;
+      }
+    }
+  }
+
+  .sidebar-menu {
+    left: 0;
+  }
+}
+
+.slidebar-collapsed-back {
+  .left-content {
+    width: 96%;
+    @include media-breakpoint-up(md) {
+      width: 91.9%;
+    }
+    @include media-breakpoint-only(md) {
+      width: 93%;
+    }
+  }
+
+  .fixed {
+    @include media-breakpoint-up(md) {
+      width: 96%;
+    }
+  }
+}
+</style>

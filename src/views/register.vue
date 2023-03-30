@@ -1,18 +1,16 @@
 <script>
-import footerComp from "@/components/footer.vue";
 import { defineComponent } from "@vue/runtime-core";
+import { RouterView } from "vue-router";
 export default defineComponent({
   setup() {},
   components: {
-    footerComp,
-  },
+    RouterView
+  }
 });
 </script>
 
 <template>
   <div class="register">
-    <router-view />
-
-    <footer-comp />
+    <RouterView />
   </div>
 </template>

@@ -1,43 +1,84 @@
 <script>
-import { defineComponent } from "vue";
+import Chart from "chart.js/auto";
 
-export default defineComponent({
-  setup() {},
+export default {
   mounted() {
-    var radarChartData = {
-      labels: ["", "", "", "", "", "", ""],
-      datasets: [
-        {
-          fillColor: "rgba(104, 174, 0, 0.83)",
-          strokeColor: "#68ae00",
-          pointColor: "#68ae00",
-          pointStrokeColor: "#fff",
-          data: [65, 59, 90, 81, 56, 55, 40],
-        },
-        {
-          fillColor: "rgba(236, 133, 38, 0.82)",
-          strokeColor: "#ec8526",
-          pointColor: "#ec8526",
-          pointStrokeColor: "#fff",
-          data: [28, 48, 40, 19, 96, 27, 100],
-        },
-      ],
-    };
-    new Chart(document.getElementById("radar").getContext("2d")).Radar(
-      radarChartData
-    );
-  },
-});
+    const ctx = document.getElementById("revenue");
+
+    new Chart(ctx, {
+      type: "radar",
+      data: {
+        labels: [
+          "Eating",
+          "Drinking",
+          "Sleeping",
+          "Designing",
+          "Coding",
+          "Cycling",
+          "Running"
+        ],
+        datasets: [
+          {
+            label: "My First Dataset",
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgb(255, 99, 132)",
+            pointBackgroundColor: "rgb(255, 99, 132)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(255, 99, 132)"
+          },
+          {
+            label: "My Second Dataset",
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
+            borderColor: "rgb(54, 162, 235)",
+            pointBackgroundColor: "rgb(54, 162, 235)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgb(54, 162, 235)"
+          }
+        ]
+      },
+      options: {
+        elements: {
+          line: {
+            borderWidth: 3
+          }
+        }
+      }
+    });
+  }
+};
 </script>
 
 <template>
   <div class="content-main revenue">
     <h3>Total Revenue</h3>
-    <canvas
-      id="radar"
-      height="300"
-      width="300"
-      style="width: 300px; height: 300px"
-    ></canvas>
+    <canvas id="revenue" height="350" width="480" style="width: 480px; height: 350px;"></canvas>
   </div>
 </template>
+
+<style lang="scss" scoped>
+@import "@/GlobalRules/scss/mainRules.scss";
+
+#revenue {
+  width: 372px !important;
+  height: 350px !important;
+  margin-top: 17px !important;
+
+  @include maxScreen(sm) {
+    width: 246px !important;
+    height: 352px !important;
+  }
+}
+
+.content-main {
+  margin-right: 15px;
+  @include maxScreen(sm) {
+    margin-left: 15px;
+  }
+}
+</style>

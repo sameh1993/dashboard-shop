@@ -1,110 +1,112 @@
+
+
+<script setup>
+import { useAuthStore } from "@/stores/auth.js";
+import { useRouter } from "vue-router";
+
+const auth = useAuthStore();
+const router = useRouter();
+
+const logout = function() {
+  auth.idToken = "";
+  router.push("/register/login");
+};
+</script>
+
 <template>
   <div class="sidebar-menu">
     <div class="logo">
-      <a href="#" class="sidebar-icon">
-        <span class="fa fa-bars"></span>
-      </a>
+      <router-link to="/" class="sidebar-icon">
+        <span @click="changeactiveSlide" class="fa fa-bars"></span>
+      </router-link>
       <a href="#">
         <span id="logo"></span>
-        <!--<img id="logo" src="" alt="Logo"/>-->
       </a>
     </div>
     <div class="menu">
       <ul id="menu">
         <li id="menu-home">
-          <a href="index.html"
-            ><i class="fa fa-tachometer"></i><span>Dashboard</span></a
-          >
+          <router-link to="/">
+            <i class="fa fa-tachometer"></i>
+            <span>Dashboard</span>
+          </router-link>
         </li>
         <li>
-          <a href="#"
-            ><i class="fa fa-cogs"></i><span>Components</span
-            ><span class="fa fa-angle-right" style="float: right"></span
-          ></a>
+          <a>
+            <i class="fa fa-cogs"></i>
+            <span>Components</span>
+            <span class="fa fa-angle-right" style="float: right"></span>
+          </a>
           <ul>
-            <li><a href="grids.html">Grids</a></li>
-            <li><a href="portlet.html">Portlets</a></li>
-          </ul>
-        </li>
-        <li id="menu-comunicacao">
-          <a href="#"
-            ><i class="fa fa-book nav_icon"></i><span>Element</span
-            ><span class="fa fa-angle-right" style="float: right"></span
-          ></a>
-          <ul id="menu-comunicacao-sub">
-            <li id="menu-mensagens" style="width: 120px">
-              <a href="buttons.html">Buttons</a>
+            <li>
+              <router-link to="/components/grid">Grids</router-link>
             </li>
-            <li id="menu-arquivos">
-              <a href="typography.html">Typography</a>
+            <li>
+              <router-link to="/components/part">Portlets</router-link>
             </li>
-            <li id="menu-arquivos"><a href="icons.html">Icons</a></li>
           </ul>
-        </li>
-        <li>
-          <a href="maps.html"
-            ><i class="fa fa-map-marker"></i><span>Maps</span></a
-          >
         </li>
         <li id="menu-academico">
-          <a href="#"
-            ><i class="fa fa-file-text"></i><span>Pages</span
-            ><span class="fa fa-angle-right" style="float: right"></span
-          ></a>
+          <a>
+            <i class="fa fa-file-text"></i>
+            <span>Pages</span>
+            <span class="fa fa-angle-right" style="float: right"></span>
+          </a>
           <ul id="menu-academico-sub">
             <li id="menu-academico-boletim">
-              <a href="login.html">Login</a>
+              <router-link to="/register/login">Login</router-link>
             </li>
             <li id="menu-academico-avaliacoes">
-              <a href="signup.html">Sign Up</a>
+              <router-link to="/register">Sign Up</router-link>
             </li>
           </ul>
         </li>
 
+        <!-- <li>
+          <router-link to="/charts"><i class="fa fa-bar-chart"></i><span>Charts</span></router-link>
+        </li>-->
         <li>
-          <a href="charts.html"
-            ><i class="fa fa-bar-chart"></i><span>Charts</span></a
-          >
-        </li>
-        <li>
-          <a href="#"
-            ><i class="fa fa-envelope"></i><span>Mailbox</span
-            ><span class="fa fa-angle-right" style="float: right"></span
-          ></a>
+          <a href="#">
+            <i class="fa fa-cog"></i>
+            <span>mailbox</span>
+            <span class="fa fa-angle-right" style="float: right"></span>
+          </a>
           <ul id="menu-academico-sub">
             <li id="menu-academico-avaliacoes">
-              <a href="inbox.html">Inbox</a>
+              <router-link to="/mailbox/inbox">compose</router-link>
             </li>
             <li id="menu-academico-boletim">
-              <a href="inbox-details.html">Compose email</a>
+              <router-link to="/mailbox/compose">compose email</router-link>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#"
-            ><i class="fa fa-cog"></i><span>System</span
-            ><span class="fa fa-angle-right" style="float: right"></span
-          ></a>
+          <a href="#">
+            <i class="fa fa-cog"></i>
+            <span>System</span>
+            <span class="fa fa-angle-right" style="float: right"></span>
+          </a>
           <ul id="menu-academico-sub">
             <li id="menu-academico-avaliacoes">
-              <a href="404.html">404</a>
+              <router-link to="/system/page404">404</router-link>
             </li>
             <li id="menu-academico-boletim">
-              <a href="blank.html">Blank</a>
+              <router-link to="/system/black">Blank</router-link>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#"
-            ><i class="fa fa-shopping-cart"></i><span>E-Commerce</span
-            ><span class="fa fa-angle-right" style="float: right"></span
-          ></a>
+          <a href="#">
+            <i class="fa fa-shopping-cart"></i>
+            <span>E-Commerce</span>
+            <span class="fa fa-angle-right" style="float: right"></span>
+          </a>
           <ul id="menu-academico-sub">
             <li id="menu-academico-avaliacoes">
-              <a href="product.html">Product</a>
+              <router-link to="/e-commerce/products">Product</router-link>
             </li>
             <li id="menu-academico-boletim">
-              <a href="price.html">Price</a>
+              <router-link to="/e-commerce/price">Price</router-link>
             </li>
           </ul>
         </li>
@@ -114,10 +116,18 @@
 </template>
 
 <style lang="scss" scoped>
+@import "@/GlobalRules/scss/mainrules.scss";
+
+.sidebar-menu {
+  position: fixed !important;
+}
+
 .sidebar {
   background-color: #eee;
   width: 18%;
   transition: width 0.5s linear;
+  position: relative;
+
   &.menu {
     width: 7%;
   }
@@ -128,11 +138,18 @@
     border-radius: 2px;
     margin: 20px 0 25px;
   }
+
   .list-unstyled {
     span {
       display: block;
       margin: 5px;
     }
+  }
+}
+
+.sidebar-icon {
+  @include maxScreen(sm) {
+    display: none;
   }
 }
 </style>
